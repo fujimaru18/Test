@@ -1,1 +1,10 @@
-com\mycompany\test\Test.class
+features\NhanVien\NhanVienService.class
+features\NhanVien\NhanVienView.class
+share\util\Validator.class
+com\mycompany\test\MainApp.class
+share\util\Constants.class
+features\NhanVien\NhanVienController.class
+share\db\DBConnection.class
+view\MainFrame.class
+features\NhanVien\NhanVien.class
+features\NhanVien\NhanVienDAO.class

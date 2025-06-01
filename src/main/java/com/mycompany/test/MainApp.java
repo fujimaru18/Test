@@ -3,14 +3,18 @@
  */
 
 package com.mycompany.test;
+import share.db.DBConnection;
+import view.MainFrame;
 
 /**
  *
  * @author LENOVO
  */
-public class Test {
+
+public class MainApp {
     public static void main(String[] args) {
-        System.out.println("MInh!");
-        
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new MainFrame().setVisible(true);  // ✅ Đúng
+        });
     }
 }
