@@ -12,5 +12,5 @@ public class DBConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
     
-    // note : test để push code
+    // tao nhanh moi
 }
