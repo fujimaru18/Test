@@ -1,15 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.test;
-import share.db.DBConnection;
-import view.MainFrame;
 
-/**
- *
- * @author LENOVO
- */
+import view.MainFrame;
 
 public class MainApp {
     public static void main(String[] args) {
