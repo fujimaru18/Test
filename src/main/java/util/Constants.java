@@ -1,10 +1,10 @@
-package share.util;
+package util;
 
 public class Constants {
-    
+
     // App
     public static final String APP_TITLE = "Quản Lý Sản Phẩm";
-    
+
     // Message Titles
     public static final String ERROR_TITLE = "Lỗi";
     public static final String SUCCESS_TITLE = "Thành Công";

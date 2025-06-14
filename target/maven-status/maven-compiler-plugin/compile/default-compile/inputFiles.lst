@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 B:\Java\Test\src\main\java\com\mycompany\test\MainApp.java
 B:\Java\Test\src\main\java\features\NhanVien\NhanVien.java
 B:\Java\Test\src\main\java\features\NhanVien\NhanVienController.java
@@ -8,3 +9,15 @@ B:\Java\Test\src\main\java\share\db\DBConnection.java
 B:\Java\Test\src\main\java\share\util\Constants.java
 B:\Java\Test\src\main\java\share\util\Validator.java
 B:\Java\Test\src\main\java\view\MainFrame.java
+=======
+C:\Users\LENOVO\Downloads\Test\src\main\java\App\MainApp.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\Controller\DanhMucController.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\DAO\DanhMucDAO.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\db\DBConnection.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\Model\DanhMuc.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\Service\DanhMucService.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Constants.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Validator.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\view\DanhMucView.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\view\Menu.java
+>>>>>>> 3bcceba (new mvc)

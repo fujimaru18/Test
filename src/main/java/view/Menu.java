@@ -1,15 +1,15 @@
 package view;
 
 import javax.swing.*;
-import static share.util.Constants.APP_TITLE;
+import static util.Constants.APP_TITLE;
 import java.awt.CardLayout;
 
-public class MainFrame extends JFrame {
+public class Menu extends JFrame {
 
     private JPanel mainPanel;
     private CardLayout cardLayout;
 
-    public MainFrame() {
+    public Menu() {
         setTitle(APP_TITLE);
         setSize(800, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -31,15 +31,18 @@ public class MainFrame extends JFrame {
         JPanel welcomePanel = new JPanel();
         welcomePanel.add(new JLabel("Welcome to Product Management App"));
 
-
+        // Tạo LopPanel
+        DanhMucView danhMuc = new DanhMucView();
 
         // Thêm các panel vào card layout với tên khóa
         mainPanel.add(welcomePanel, "welcome");
+        mainPanel.add(danhMuc, "DanhMuc"); // thêm panel quản lý lớp học
+
         add(mainPanel);
 
         // Xử lý sự kiện menu item chuyển sang panel LopPanel
         lopMenuItem.addActionListener(e -> {
-            cardLayout.show(mainPanel, "lop");
+            cardLayout.show(mainPanel, "DanhMuc");
         });
 
         // Mặc định hiển thị panel welcome
@@ -48,7 +51,7 @@ public class MainFrame extends JFrame {
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> {
-            MainFrame frame = new MainFrame();
+            Menu frame = new Menu();
             frame.setVisible(true);
         });
     }

@@ -1,11 +1,16 @@
-package com.mycompany.test;
+package App;
 
-import view.MainFrame;
+import view.Menu;
 
+/**
+ *
+ * @author LENOVO
+ */
 public class MainApp {
+
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> {
-            new MainFrame().setVisible(true);
+            new Menu().setVisible(true);
         });
     }
 }

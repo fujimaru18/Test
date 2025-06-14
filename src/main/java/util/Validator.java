@@ -1,4 +1,6 @@
-package share.util;
+
+package util;
+
 
 import javax.swing.JOptionPane;
 
