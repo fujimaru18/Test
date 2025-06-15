@@ -2,10 +2,7 @@ package App;
 
 import View.Menu;
 
-/**
- *
- * @author LENOVO
- */
+
 public class MainApp {
 
     public static void main(String[] args) {
