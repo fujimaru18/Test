@@ -11,14 +11,14 @@ public class Menu extends JFrame {
 
     public Menu() {
         setTitle(APP_TITLE);
-        setSize(800, 400);
+        setSize(600, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         // Tạo thanh menu
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Quản lý");
-        JMenuItem lopMenuItem = new JMenuItem("Quản lý Lớp học");
+        JMenuItem lopMenuItem = new JMenuItem("Quản lý Danh Mục");
         menu.add(lopMenuItem);
         menuBar.add(menu);
         setJMenuBar(menuBar);
