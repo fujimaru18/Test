@@ -4,7 +4,10 @@ C:\Users\LENOVO\Downloads\Test\src\main\java\DAO\DanhMucDAO.java
 C:\Users\LENOVO\Downloads\Test\src\main\java\db\DBConnection.java
 C:\Users\LENOVO\Downloads\Test\src\main\java\Model\DanhMuc.java
 C:\Users\LENOVO\Downloads\Test\src\main\java\Service\DanhMucService.java
-C:\Users\LENOVO\Downloads\Test\src\main\java\util\Constants.java
-C:\Users\LENOVO\Downloads\Test\src\main\java\util\Validator.java
-C:\Users\LENOVO\Downloads\Test\src\main\java\view\DanhMucView.java
-C:\Users\LENOVO\Downloads\Test\src\main\java\view\Menu.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Constants\DBConstants.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Constants\MessageConstants.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Constants\UIConstants.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Validator\CommonValidator.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\util\Validator\DanhMucValidator.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\View\DanhMucView.java
+C:\Users\LENOVO\Downloads\Test\src\main\java\View\Menu.java

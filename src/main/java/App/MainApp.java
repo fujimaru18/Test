@@ -1,6 +1,6 @@
 package App;
 
-import view.Menu;
+import View.Menu;
 
 /**
  *
