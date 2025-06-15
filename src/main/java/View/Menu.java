@@ -35,9 +35,16 @@ public class Menu extends JFrame {
         JMenu menu = new JMenu("Quản lý");
 
         JMenuItem danhMucItem = new JMenuItem("Quản lý Danh Mục");
-        danhMucItem.addActionListener(e -> cardLayout.show(mainPanel, "DanhMuc"));
 
+        danhMucItem.addActionListener(e -> cardLayout.show(mainPanel, "DanhMuc"));
+        JMenuItem sanPhamItem = new JMenuItem("Quản lý Sản Phẩm");
+        sanPhamItem.addActionListener(e -> cardLayout.show(mainPanel, "SanPham"));
+        JMenuItem hoaDonItem = new JMenuItem("Quản lý Hóa Đơn");
+        hoaDonItem.addActionListener(e -> cardLayout.show(mainPanel, "HoaDon"));
+        
         menu.add(danhMucItem);
+        menu.add(sanPhamItem);
+        menu.add(hoaDonItem);
         menuBar.add(menu);
 
         setJMenuBar(menuBar);
@@ -56,12 +63,15 @@ public class Menu extends JFrame {
 
         // Tạo View & Controller cho Danh Mục
         danhMucView = new DanhMucView();
-        danhMucController = new DanhMucController(danhMucView); 
+        danhMucController = new DanhMucController(danhMucView);
 
         // Thêm các view vào CardLayout
         mainPanel.add(welcomePanel, "welcome");
         mainPanel.add(danhMucView, "DanhMuc");
-
+//    mainPanel.add(welcomePanel, "welcome");
+//    mainPanel.add(danhMucView, "DanhMuc");
+//    mainPanel.add(sanPhamView, "SanPham");
+//    mainPanel.add(hoaDonView, "HoaDon");
         add(mainPanel);
     }
 
