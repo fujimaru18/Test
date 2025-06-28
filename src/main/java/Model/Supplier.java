@@ -2,7 +2,7 @@ package Model;
 
 public class Supplier {
 
-    private String id;
+    private int id;
     private String name;
     private String phone_number;
     private String address;
@@ -11,7 +11,11 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String id, String name, String phone_number, String address, String email) {
+    public Supplier(int id) {
+        this.id = id;
+    }
+    
+    public Supplier(int id, String name, String phone_number, String address, String email) {
         this.id = id;
         this.name = name;
         this.phone_number = phone_number;
@@ -19,7 +23,7 @@ public class Supplier {
         this.email = email;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -39,7 +43,7 @@ public class Supplier {
         return email;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
