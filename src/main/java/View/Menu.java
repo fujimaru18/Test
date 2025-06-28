@@ -15,6 +15,7 @@ public class Menu extends JFrame {
     // Khai báo view để truy cập từ nhiều nơi nếu cần
     private DanhMucView danhMucView;
     private DanhMucController danhMucController;
+    
 
     public Menu() {
         setTitle(APP_TITLE);

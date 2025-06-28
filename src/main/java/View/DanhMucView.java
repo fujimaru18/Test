@@ -27,7 +27,7 @@ public class DanhMucView extends JPanel {
         JLabel lblTitle = new JLabel("Quản Lý Danh Mục", JLabel.CENTER);
         lblTitle.setFont(UIConstants.TITLE_FONT);
         lblTitle.setOpaque(true);
-        lblTitle.setBackground(UIConstants.TITLE_COLOR);
+        lblTitle.setBackground(UIConstants.TITLE_COLOR_BG);
         lblTitle.setForeground(UIConstants.TEXT_COLOR);
         lblTitle.setPreferredSize(new Dimension(600, 40));
         return lblTitle;
@@ -108,7 +108,7 @@ public class DanhMucView extends JPanel {
     }
 
     private void styleButton(JButton button) {
-        button.setBackground(UIConstants.BUTTON_COLOR);
+        button.setBackground(UIConstants.BUTTON_COLOR_BG);
         button.setForeground(UIConstants.TEXT_COLOR);
         button.setFocusPainted(false);
         button.setFont(UIConstants.DEFAULT_FONT);

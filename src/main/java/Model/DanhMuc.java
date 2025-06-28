@@ -9,6 +9,10 @@ public class DanhMuc {
     public DanhMuc() {
     }
 
+    public DanhMuc(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public DanhMuc(String name, String des) {
         this.name = name;
         this.des = des;

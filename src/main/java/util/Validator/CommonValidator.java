@@ -23,23 +23,14 @@ public class CommonValidator {
         }
         return true;
     }
-    // check số thực
-//    public static boolean isPositiveDouble(String value, String fieldName) {
-//        try {
-//            double number = Double.parseDouble(value);
-//            if (number < 0) {
-//                showError(String.format(MessageConstants.ERROR_NEGATIVE_NUMBER, fieldName));
-//                return false;
-//            }
-//            return true;
-//        } catch (NumberFormatException e) {
-//            showError(String.format(MessageConstants.ERROR_INVALID_NUMBER, fieldName));
-//            return false;
-//        }
-//    }
 
     //check số tự nhiên
     public static boolean isPositiveInteger(String value, String fieldName) {
+        // Kiểm tra không được để trống trước
+        if (!isNotEmpty(value, fieldName)) {
+            return false;
+        }
+
         try {
             int number = Integer.parseInt(value);
             if (number < 0) {
@@ -52,6 +43,23 @@ public class CommonValidator {
             return false;
         }
     }
+
+    public static boolean isValidImage(byte[] image, String fieldName) {
+    // Kiểm tra null
+    if (image == null || image.length == 0) {
+        showError(String.format("Trường %s không được để trống.", fieldName));
+        return false;
+    }
+
+    // Kiểm tra kích thước ảnh (ví dụ: không quá 5MB)
+    final int MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+    if (image.length > MAX_SIZE) {
+        showError(String.format("Kích thước %s vượt quá giới hạn cho phép (tối đa 5MB).", fieldName));
+        return false;
+    }
+
+    return true;
+}
 
     private static void showError(String message) {
         JOptionPane.showMessageDialog(null, message, MessageConstants.TITLE_ERROR, JOptionPane.ERROR_MESSAGE);

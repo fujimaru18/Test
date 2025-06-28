@@ -13,9 +13,7 @@ public class DanhMucDAO {
     public List<DanhMuc> getAll() {
         List<DanhMuc> list = new ArrayList<>();
         String sql = "SELECT * FROM " + DBConstants.TABLE_CATEGORY;
-        try (Connection conn = DBConnection.getConnection();
-             Statement st = conn.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+        try (Connection conn = DBConnection.getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 DanhMuc dm = new DanhMuc(
@@ -34,10 +32,9 @@ public class DanhMucDAO {
 
     public boolean insert(DanhMuc dm) {
         String sql = "INSERT INTO " + DBConstants.TABLE_CATEGORY + "("
-                + DBConstants.CATEGORY_NAME + ", " + DBConstants.CATEGORY_DESCRIPTION + ") VALUES (?, ?)";
+                + DBConstants.CATEGORY_NAME + "," + DBConstants.CATEGORY_DESCRIPTION + ") VALUES (?, ?)";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, dm.getName());
             ps.setString(2, dm.getDes());
@@ -71,8 +68,7 @@ public class DanhMucDAO {
                 + DBConstants.CATEGORY_DESCRIPTION + " = ? WHERE "
                 + DBConstants.CATEGORY_ID + " = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, dm.getName());
             ps.setString(2, dm.getDes());
@@ -90,8 +86,7 @@ public class DanhMucDAO {
         String sql = "DELETE FROM " + DBConstants.TABLE_CATEGORY
                 + " WHERE " + DBConstants.CATEGORY_ID + " = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
@@ -106,8 +101,7 @@ public class DanhMucDAO {
         String sql = "SELECT * FROM " + DBConstants.TABLE_CATEGORY
                 + " WHERE " + DBConstants.CATEGORY_NAME + " = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();

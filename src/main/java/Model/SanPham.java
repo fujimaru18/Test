@@ -2,22 +2,22 @@ package Model;
 
 public class SanPham {
 
-    private int id;
+    private int productId;
     private String name;
     private int importPrice;
     private int salePrice;
     private int stockQuantity;
     private String unit;
     private DanhMuc categoryId;
-    private String supplierId;
-    private String status;
+    private Supplier supplierId;
+    private int status;
     private byte[] image;
 
     public SanPham() {
     }
 
-    public SanPham(int id, String name, int importPrice, int salePrice, int stockQuantity, String unit, DanhMuc categoryId, String supplierId, String status, byte[] image) {
-        this.id = id;
+    public SanPham(int productId, String name, int importPrice, int salePrice, int stockQuantity, String unit, DanhMuc categoryId, Supplier supplierId, int status, byte[] image) {
+        this.productId = productId;
         this.name = name;
         this.importPrice = importPrice;
         this.salePrice = salePrice;
@@ -29,8 +29,8 @@ public class SanPham {
         this.image = image;
     }
 
-    public int getId() {
-        return id;
+    public int getproductId() {
+        return productId;
     }
 
     public String getName() {
@@ -57,11 +57,11 @@ public class SanPham {
         return categoryId;
     }
 
-    public String getSupplierId() {
+    public Supplier getSupplierId() {
         return supplierId;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
@@ -69,8 +69,8 @@ public class SanPham {
         return image;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setproductId(int productId) {
+        this.productId = productId;
     }
 
     public void setName(String name) {
@@ -97,11 +97,11 @@ public class SanPham {
         this.categoryId = categoryId;
     }
 
-    public void setSupplierId(String supplierId) {
+    public void setSupplierId(Supplier supplierId) {
         this.supplierId = supplierId;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -111,7 +111,7 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return id + name + importPrice + salePrice + stockQuantity + unit + categoryId + supplierId + status + image.length;
+        return productId + name + importPrice + salePrice + stockQuantity + unit + categoryId + supplierId + status + image.length;
     }
 
 }
