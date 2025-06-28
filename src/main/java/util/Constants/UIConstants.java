@@ -15,8 +15,8 @@ public class UIConstants {
 
     // Màu sắc
     public static final Color TABLE_HEADER_BG = new Color(230, 240, 255);
-    public static final Color TITLE_COLOR = Color.CYAN;
-    public static final Color BUTTON_COLOR = Color.CYAN;
+    public static final Color TITLE_COLOR_BG = Color.CYAN;
+    public static final Color BUTTON_COLOR_BG = Color.CYAN;
     public static final Color TEXT_COLOR = Color.BLACK;
 
     // Kích thước

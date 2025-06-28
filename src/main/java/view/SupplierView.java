@@ -25,7 +25,6 @@ public class SupplierView extends javax.swing.JPanel {
         model = (DefaultTableModel) tblSupplier.getModel();
         model.setRowCount(0);
         try {
-
             for (Supplier s : supplierList) {
                 model.addRow(new Object[]{
                     s.getId(),
@@ -274,7 +273,6 @@ public class SupplierView extends javax.swing.JPanel {
 
         if (row >= 0 && row < supplierList.size()) {
             Supplier s = supplierList.get(row);
-
             txtID.setText(String.valueOf(s.getId()));
             txtName.setText(s.getName());
             txtPhoneNumber.setText(s.getPhone_number());
@@ -332,7 +330,7 @@ public class SupplierView extends javax.swing.JPanel {
         String phone = txtPhoneNumber.getText().trim();
         String address = txtAddress.getText().trim();
         String email = txtEmail.getText().trim();
-
+        int selectedIndex = tblSupplier.getSelectedRow();
         try {
             if (name.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Vui lòng nhập Tên NCC !!!", "Cảnh báo !!!", JOptionPane.NO_OPTION);
@@ -349,7 +347,9 @@ public class SupplierView extends javax.swing.JPanel {
             int confirm = JOptionPane.showConfirmDialog(null, "Bạn có muốn cập nhật không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 if (supController.update(newSupplier)) {
+                    clear();
                     JOptionPane.showMessageDialog(null, "Cập nhật thành công!");
+                    supplierList.set(selectedIndex, newSupplier);
                     loadSuppliersToTable();
                 } else {
                     JOptionPane.showMessageDialog(null, "Cập nhật thất bại!");
@@ -368,10 +368,14 @@ public class SupplierView extends javax.swing.JPanel {
 
     private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
         // TODO add your handling code here:
+        int selectedIndex = tblSupplier.getSelectedRow();
         int id = Integer.parseInt(txtID.getText());
         int confirm = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa NCC không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             if (supController.delete(id)) {
+                clear();
+                supplierList.remove(selectedIndex);
+                loadSuppliersToTable();
                 JOptionPane.showMessageDialog(null, "Xóa NCC thành công", "Thông Báo", JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -400,7 +404,7 @@ public class SupplierView extends javax.swing.JPanel {
 
     public void loadSuppliersToTable() {
         List<Supplier> list = supController.getAll();
-        DefaultTableModel model = (DefaultTableModel) tblSupplier.getModel();
+        // model = (DefaultTableModel) tblSupplier.getModel();
         model.setRowCount(0);
         for (Supplier s : list) {
             model.addRow(new Object[]{s.getId(), s.getName(), s.getPhone_number(), s.getAddress(), s.getEmail()});

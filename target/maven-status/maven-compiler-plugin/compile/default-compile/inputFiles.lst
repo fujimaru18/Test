@@ -13,7 +13,7 @@ B:\Java\Test\src\main\java\util\Constants\MessageConstants.java
 B:\Java\Test\src\main\java\util\Constants\UIConstants.java
 B:\Java\Test\src\main\java\util\Validator\CommonValidator.java
 B:\Java\Test\src\main\java\util\Validator\DanhMucValidator.java
-B:\Java\Test\src\main\java\View\DangNhapView.java
-B:\Java\Test\src\main\java\View\DanhMucView.java
-B:\Java\Test\src\main\java\View\Menu.java
-B:\Java\Test\src\main\java\View\SupplierView.java
+B:\Java\Test\src\main\java\view\DangNhapView.java
+B:\Java\Test\src\main\java\view\DanhMucView.java
+B:\Java\Test\src\main\java\view\Menu.java
+B:\Java\Test\src\main\java\view\SupplierView.java
