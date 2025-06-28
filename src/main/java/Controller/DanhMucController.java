@@ -157,7 +157,7 @@ public class DanhMucController {
                     .findFirst()
                     .orElse(null);
 
-            if (dm != null && service.deleteDanhMuc(dm.getId())) {
+            if (dm != null && service.deleteDanhMuc(dm.getcategoryId())) {
                 loadTableData();
             } else {
                 JOptionPane.showMessageDialog(null, MessageConstants.ERROR_DELETE);

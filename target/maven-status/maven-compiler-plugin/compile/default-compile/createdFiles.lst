@@ -1,4 +1,5 @@
 view\DanhMucView$1.class
+Model\SanPham.class
 Service\DanhMucService.class
 view\Menu.class
 Model\DanhMuc.class

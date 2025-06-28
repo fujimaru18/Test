@@ -2,7 +2,7 @@ package Model;
 
 public class DanhMuc {
 
-    private int id;
+    private int categoryId;
     private String name;
     private String des;
 
@@ -14,18 +14,18 @@ public class DanhMuc {
         this.des = des;
     }
 
-    public DanhMuc(int id, String name, String des) {
-        this.id = id;
+    public DanhMuc(int categoryId, String name, String des) {
+        this.categoryId = categoryId;
         this.name = name;
         this.des = des;
     }
 
-    public int getId() {
-        return id;
+    public int getcategoryId() {
+        return categoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setcategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {

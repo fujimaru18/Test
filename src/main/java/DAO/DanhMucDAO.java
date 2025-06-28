@@ -50,7 +50,7 @@ public class DanhMucDAO {
 
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                dm.setId(rs.getInt(1));
+                dm.setcategoryId(rs.getInt(1));
             }
             return true;
 
@@ -76,7 +76,7 @@ public class DanhMucDAO {
 
             ps.setString(1, dm.getName());
             ps.setString(2, dm.getDes());
-            ps.setInt(3, dm.getId());
+            ps.setInt(3, dm.getcategoryId());
 
             return ps.executeUpdate() > 0;
 
