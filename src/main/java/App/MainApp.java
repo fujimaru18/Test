@@ -1,7 +1,7 @@
 package App;
 
-import View.Menu;
 import view.DangNhapView;
+import View.Menu;
 
 public class MainApp {
 

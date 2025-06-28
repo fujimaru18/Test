@@ -4,7 +4,7 @@ import Controller.DanhMucController;
 
 import javax.swing.*;
 import java.awt.*;
-
+import view.SupplierView;
 import static util.Constants.UIConstants.APP_TITLE;
 
 public class Menu extends JFrame {
@@ -14,6 +14,7 @@ public class Menu extends JFrame {
 
     // Khai báo view để truy cập từ nhiều nơi nếu cần
     private DanhMucView danhMucView;
+    private SupplierView supplierView;
     private DanhMucController danhMucController;
     
 
@@ -40,12 +41,12 @@ public class Menu extends JFrame {
         danhMucItem.addActionListener(e -> cardLayout.show(mainPanel, "DanhMuc"));
         JMenuItem sanPhamItem = new JMenuItem("Quản lý Sản Phẩm");
         sanPhamItem.addActionListener(e -> cardLayout.show(mainPanel, "SanPham"));
-        JMenuItem hoaDonItem = new JMenuItem("Quản lý Hóa Đơn");
-        hoaDonItem.addActionListener(e -> cardLayout.show(mainPanel, "HoaDon"));
+        JMenuItem nhaCungCapItem = new JMenuItem("Quản lý Nhà Cung Cấp");
+        nhaCungCapItem.addActionListener(e -> cardLayout.show(mainPanel, "NhaCungCap"));
         
         menu.add(danhMucItem);
         menu.add(sanPhamItem);
-        menu.add(hoaDonItem);
+        menu.add(nhaCungCapItem);
         menuBar.add(menu);
 
         setJMenuBar(menuBar);
@@ -64,11 +65,13 @@ public class Menu extends JFrame {
 
         // Tạo View & Controller cho Danh Mục
         danhMucView = new DanhMucView();
+        supplierView = new SupplierView();
         danhMucController = new DanhMucController(danhMucView);
 
         // Thêm các view vào CardLayout
         mainPanel.add(welcomePanel, "welcome");
         mainPanel.add(danhMucView, "DanhMuc");
+        mainPanel.add(supplierView, "NhaCungCap");
 //    mainPanel.add(welcomePanel, "welcome");
 //    mainPanel.add(danhMucView, "DanhMuc");
 //    mainPanel.add(sanPhamView, "SanPham");
