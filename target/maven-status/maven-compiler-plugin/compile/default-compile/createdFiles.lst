@@ -1,5 +1,6 @@
 view\DanhMucView$1.class
 Model\SanPham.class
+DAO\SanPhamDAO.class
 view\DangNhapView.class
 view\SupplierView$1.class
 Service\DanhMucService.class
@@ -11,6 +12,7 @@ view\DangNhapView$1.class
 util\Constants\DBConstants.class
 view\DanhMucView.class
 Controller\DanhMucController$1.class
+Service\SanPhamService.class
 util\Validator\CommonValidator.class
 util\Validator\DanhMucValidator.class
 view\DangNhapView$3.class
@@ -20,6 +22,7 @@ Controller\DanhMucController.class
 view\DangNhapView$4.class
 view\Menu.class
 view\SupplierView.class
+Controller\SanPhamController.class
 view\SanPhamView.class
 Model\User.class
 util\Constants\MessageConstants.class
