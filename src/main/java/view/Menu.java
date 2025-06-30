@@ -5,6 +5,8 @@ import Controller.DanhMucController;
 import javax.swing.*;
 import java.awt.*;
 import view.SupplierView;
+import view.UserAccountView;
+
 import static util.Constants.UIConstants.APP_TITLE;
 
 public class Menu extends JFrame {
@@ -15,12 +17,12 @@ public class Menu extends JFrame {
     // Khai báo view để truy cập từ nhiều nơi nếu cần
     private DanhMucView danhMucView;
     private SupplierView supplierView;
+    private UserAccountView userAccountView;
     private DanhMucController danhMucController;
-    
 
     public Menu() {
         setTitle(APP_TITLE);
-        setSize(800, 600); // tăng kích thước cho phù hợp nội dung
+        setSize(1000, 800); // tăng kích thước cho phù hợp nội dung
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // căn giữa màn hình
 
@@ -43,10 +45,13 @@ public class Menu extends JFrame {
         sanPhamItem.addActionListener(e -> cardLayout.show(mainPanel, "SanPham"));
         JMenuItem nhaCungCapItem = new JMenuItem("Quản lý Nhà Cung Cấp");
         nhaCungCapItem.addActionListener(e -> cardLayout.show(mainPanel, "NhaCungCap"));
-        
+        JMenuItem userAccountItem = new JMenuItem("Quản lý Tài Khoản");
+        userAccountItem.addActionListener(e -> cardLayout.show(mainPanel, "QuanLyTaiKhoan"));
+
         menu.add(danhMucItem);
         menu.add(sanPhamItem);
         menu.add(nhaCungCapItem);
+        menu.add(userAccountItem);
         menuBar.add(menu);
 
         setJMenuBar(menuBar);
@@ -66,12 +71,15 @@ public class Menu extends JFrame {
         // Tạo View & Controller cho Danh Mục
         danhMucView = new DanhMucView();
         supplierView = new SupplierView();
+        userAccountView = new UserAccountView();
         danhMucController = new DanhMucController(danhMucView);
 
         // Thêm các view vào CardLayout
         mainPanel.add(welcomePanel, "welcome");
         mainPanel.add(danhMucView, "DanhMuc");
         mainPanel.add(supplierView, "NhaCungCap");
+        mainPanel.add(userAccountView, "QuanLyTaiKhoan");
+
 //    mainPanel.add(welcomePanel, "welcome");
 //    mainPanel.add(danhMucView, "DanhMuc");
 //    mainPanel.add(sanPhamView, "SanPham");

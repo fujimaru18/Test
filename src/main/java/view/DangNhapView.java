@@ -4,6 +4,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import Controller.DangNhapController;
 import View.Menu;
+import Model.User;
 
 public class DangNhapView extends javax.swing.JFrame {
 
@@ -156,21 +157,39 @@ public class DangNhapView extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String username = txtUserName.getText().trim();
         String password = new String(txtPassword.getPassword()).trim();
-        if (username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        try {
-            if (loginCtr.login(username, password)) {
+//        if (username.isEmpty() || password.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
+//        try {
+//            if (loginCtr.login(username, password)) {
+//                new Menu().setVisible(true);
+//                this.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại", "Lỗi", JOptionPane.ERROR_MESSAGE);
+//                clearTextField();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        User user = loginCtr.login2(username, password);
+        System.out.println(""+ username + " " + password);
+        if (user != null) {
+            if (user.getRole().equalsIgnoreCase("admin")) {
                 new Menu().setVisible(true);
                 this.dispose();
+            } else if (user.getRole().equalsIgnoreCase("employee")) {
+                new EmployeeMenu().setVisible(true);
+                this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Tài khoản không tồn tại", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                clearTextField();
+                JOptionPane.showMessageDialog(null, "Quyền không hợp lệ", "Cảnh bảo", JOptionPane.ERROR_MESSAGE);
+
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[]) {

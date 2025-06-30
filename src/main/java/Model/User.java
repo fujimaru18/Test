@@ -7,12 +7,12 @@ public class User {
     private String userName;
     private String password;
     private String role;
-    private String status;
+    private int status;
 
     public User() {
     }
 
-    public User(int userId, String fullName, String userName, String password, String role, String status) {
+    public User(int userId, String fullName, String userName, String password, String role, int status) {
         this.userId = userId;
         this.fullName = fullName;
         this.userName = userName;
@@ -41,7 +41,7 @@ public class User {
         return role;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
@@ -65,7 +65,7 @@ public class User {
         this.role = role;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

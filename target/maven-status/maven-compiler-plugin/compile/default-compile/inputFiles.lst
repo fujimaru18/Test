@@ -2,6 +2,7 @@ B:\Java\Test\src\main\java\App\MainApp.java
 B:\Java\Test\src\main\java\Controller\DangNhapController.java
 B:\Java\Test\src\main\java\Controller\DanhMucController.java
 B:\Java\Test\src\main\java\Controller\SupplierController.java
+B:\Java\Test\src\main\java\Controller\UserAccountController.java
 B:\Java\Test\src\main\java\DAO\DanhMucDAO.java
 B:\Java\Test\src\main\java\db\DBConnection.java
 B:\Java\Test\src\main\java\Model\DanhMuc.java
@@ -15,5 +16,7 @@ B:\Java\Test\src\main\java\util\Validator\CommonValidator.java
 B:\Java\Test\src\main\java\util\Validator\DanhMucValidator.java
 B:\Java\Test\src\main\java\view\DangNhapView.java
 B:\Java\Test\src\main\java\view\DanhMucView.java
+B:\Java\Test\src\main\java\view\EmployeeMenu.java
 B:\Java\Test\src\main\java\view\Menu.java
 B:\Java\Test\src\main\java\view\SupplierView.java
+B:\Java\Test\src\main\java\view\UserAccountView.java
