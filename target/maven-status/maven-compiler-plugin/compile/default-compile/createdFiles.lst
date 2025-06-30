@@ -17,6 +17,7 @@ view\OrderView$8.class
 view\ManageInvoiceView$2.class
 Controller\ManageOrderController$Search.class
 view\Menu.class
+Controller\InvoiceDetailController$ExportInvoice.class
 Service\InvoiceController.class
 Controller\ManageOrderController.class
 view\ManageInvoiceView.class
@@ -26,6 +27,7 @@ view\OrderView.class
 Model\Supplier.class
 Controller\CustomerController$AddCustomer.class
 view\OrderView$2.class
+Controller\InvoiceDetailController.class
 Controller\ManageInvoiceController.class
 util\Constants\DBConstants.class
 Controller\DanhMucController$1.class
@@ -37,6 +39,7 @@ view\ManageOrderView.class
 Controller\ManageOrderController$HideBtn.class
 view\ManageCustomerView$6.class
 view\OrderView$3.class
+view\InvoiceDetail$1.class
 Controller\CustomerController.class
 Controller\OrderController.class
 Model\User.class

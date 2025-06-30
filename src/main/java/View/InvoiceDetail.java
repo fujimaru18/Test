@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Model.InvoiceDetailModel;
+import javax.swing.JButton;
 
 /**
  *
@@ -61,6 +62,7 @@ public class InvoiceDetail extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         lbOrderDate = new javax.swing.JLabel();
+        btnExport = new javax.swing.JButton();
 
         jLabel8.setText("jLabel8");
 
@@ -203,6 +205,13 @@ public class InvoiceDetail extends javax.swing.JPanel {
 
         lbOrderDate.setText("date");
 
+        btnExport.setText("In hóa đơn");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,6 +261,10 @@ public class InvoiceDetail extends javax.swing.JPanel {
                                         .addComponent(lbDate))))
                             .addComponent(jLabel1))))
                 .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnExport)
+                .addGap(219, 219, 219))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,9 +300,20 @@ public class InvoiceDetail extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lbpaymentMethod))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnExport)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExportActionPerformed
+    
+    
+    public JButton getBtnExport(){
+        return btnExport;
+    }
     public JLabel getLbName() {
         return lbNameCustomer;
     }
@@ -333,7 +357,10 @@ public class InvoiceDetail extends javax.swing.JPanel {
     public JLabel getLbOrderId() {
         return lbOrderId;
     }
-
+    
+     public JLabel getLbOrderDate() {
+        return lbOrderDate;
+    }
     public void setInfo(InvoiceDetailModel info) {
 
         //customer
@@ -368,6 +395,7 @@ public class InvoiceDetail extends javax.swing.JPanel {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

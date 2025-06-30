@@ -3,6 +3,7 @@ package View;
 import Controller.CustomerController;
 import Controller.DanhMucController;
 import Controller.InvoiceController;
+import Controller.InvoiceDetailController;
 import Controller.ManageInvoiceController;
 import Controller.ManageOrderController;
 import Controller.OrderController;
@@ -35,7 +36,8 @@ public class Menu extends JFrame {
     private ManageOrderController manageOrderController;
     private CustomerController customerController;
     private ManageInvoiceController manageInvoiceController;
-
+    private InvoiceDetailController invoiceDetailController;
+    
     private OrderDAO orderDAO;
 
     public Menu() {
@@ -114,6 +116,7 @@ public class Menu extends JFrame {
         manageOrderController = new ManageOrderController(manageOrderView, orderView, this);
         customerController = new CustomerController(customerView, this);
         manageInvoiceController = new ManageInvoiceController(manageInvoiceView, invoiceDetailView, this);
+        invoiceDetailController = new InvoiceDetailController(invoiceDetailView, this);
 
         mainPanel.add(orderView, "Order");
         mainPanel.add(manageOrderView, "ManageOrder");
