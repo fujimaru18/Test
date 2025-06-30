@@ -111,7 +111,7 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return productId + name + importPrice + salePrice + stockQuantity + unit + categoryId + supplierId + status + image.length;
+        return  name;
     }
 
 }
