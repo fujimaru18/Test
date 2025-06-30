@@ -166,4 +166,31 @@ public class SanPhamDAO {
         return null;
     }
 
+    public List<SanPham> getByCategoryId(int cateId) {
+        List<SanPham> list = new ArrayList<>();
+        String sql = "SELECT productId, productName, salePrice, categoryId FROM products WHERE categoryId = ?";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, cateId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                SanPham product = new SanPham();
+                product.setproductId(rs.getInt("productId"));
+                product.setName(rs.getString("productName"));
+                product.setSalePrice(rs.getInt("salePrice")); // hoặc Double tùy bạn
+                DanhMuc category = new DanhMuc();
+                category.setcategoryId(rs.getInt("categoryId"));
+                product.setCategoryId(category);
+
+                list.add(product);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
 }
