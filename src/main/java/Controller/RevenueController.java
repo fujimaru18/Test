@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class RevenueController {
+
     private final RevenuePanel view;
     private final RevenueDAO dao;
 
@@ -52,9 +53,12 @@ public class RevenueController {
 
             // Gọi DAO
             List<RevenueDTO> list = switch (gran) {
-                case "Tháng" -> dao.getMonthlyRevenue(from, to);
-                case "Năm"   -> dao.getYearlyRevenue(from, to);
-                default      -> dao.getDailyRevenue(from, to);
+                case "Tháng" ->
+                    dao.getMonthlyRevenue(from, to);
+                case "Năm" ->
+                    dao.getYearlyRevenue(from, to);
+                default ->
+                    dao.getDailyRevenue(from, to);
             };
 
             // Hiển thị bảng
@@ -64,9 +68,9 @@ public class RevenueController {
 
             for (RevenueDTO dto : list) {
                 model.addRow(new Object[]{
-                        dto.getLabel(),
-                        dto.getInvoiceCount(),
-                        String.format("%,.0f", dto.getTotal())
+                    dto.getLabel(),
+                    dto.getInvoiceCount(),
+                    String.format("%,.0f", dto.getTotal())
                 });
                 total += dto.getTotal();
             }

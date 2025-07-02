@@ -12,12 +12,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LowStockController {
+
     private final LowStockPanel view;
     private final ProductDAO dao;
 
     public LowStockController(LowStockPanel view, ProductDAO dao) throws SQLException {
         this.view = view;
-        this.dao  = dao;
+        this.dao = dao;
         init();
     }
 
@@ -35,14 +36,16 @@ public class LowStockController {
     private void loadData() throws SQLException {
         try {
             int threshold = Integer.parseInt(view.getTxtThreshold().getText().trim());
-            if (threshold < 0) throw new NumberFormatException();
+            if (threshold < 0) {
+                throw new NumberFormatException();
+            }
 
             List<Product> list = dao.getLowStockProducts(threshold);
             DefaultTableModel model = view.getTableModel();
             model.setRowCount(0);
 
             for (Product p : list) {
-                model.addRow(new Object[] {
+                model.addRow(new Object[]{
                     p.getProductId(),
                     p.getProductName(),
                     p.getStockQuantity()

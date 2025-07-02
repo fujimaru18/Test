@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ImportBySupplierController {
+
     private final ImportBySupplierPanel view;
     private final ImportReceiptDAO dao;
 
@@ -57,12 +58,12 @@ public class ImportBySupplierController {
                 double thanhTien = d.getTotal();
                 total += thanhTien;
                 model.addRow(new Object[]{
-                        d.getSupplierName(),
-                        d.getCategoryName(),
-                        d.getProductName(),
-                        d.getQuantity(),
-                        String.format("%,.0f", d.getImportPrice()),
-                        String.format("%,.0f", thanhTien)
+                    d.getSupplierName(),
+                    d.getCategoryName(),
+                    d.getProductName(),
+                    d.getQuantity(),
+                    String.format("%,.0f", d.getImportPrice()),
+                    String.format("%,.0f", thanhTien)
                 });
             }
 

@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class TopProductPanel extends JPanel {
+
     private JLabel lblFrom, lblTo;
     private JTextField txtFromDate, txtToDate;
     private JComboBox<String> cboGranularity;
@@ -14,18 +15,15 @@ public class TopProductPanel extends JPanel {
     public TopProductPanel() {
         setLayout(new BorderLayout());
 
-        // ===== Top Wrapper Panel with BoxLayout =====
         JPanel topWrapper = new JPanel();
         topWrapper.setLayout(new BoxLayout(topWrapper, BoxLayout.Y_AXIS));
 
-        // ===== Line 1: "Thống kê theo" =====
         JPanel line1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         line1.add(new JLabel("Thống kê theo:"));
         cboGranularity = new JComboBox<>(new String[]{"Ngày", "Tháng", "Năm"});
         line1.add(cboGranularity);
         topWrapper.add(line1);
 
-        // ===== Line 2: From - To - Button =====
         JPanel line2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         lblFrom = new JLabel("Từ:");
         txtFromDate = new JTextField(10);
@@ -43,13 +41,11 @@ public class TopProductPanel extends JPanel {
         topWrapper.add(line2);
         add(topWrapper, BorderLayout.NORTH);
 
-        // ===== Table =====
         tblResult = new JTable(new DefaultTableModel(
                 new Object[]{"Sản phẩm", "Số lượng bán", "Doanh thu (VND)"}, 0
         ));
         add(new JScrollPane(tblResult), BorderLayout.CENTER);
 
-        // ===== Gợi ý nhập liệu ban đầu =====
         cboGranularity.addActionListener(e -> updateHint());
         updateHint();
     }
@@ -76,12 +72,31 @@ public class TopProductPanel extends JPanel {
         }
     }
 
-    // ===== Getters =====
-    public JTextField getTxtFromDate() { return txtFromDate; }
-    public JTextField getTxtToDate() { return txtToDate; }
-    public JComboBox<String> getCboGranularity() { return cboGranularity; }
-    public JButton getBtnView() { return btnView; }
-    public JTable getTblResult() { return tblResult; }
-    public JLabel getLblFrom() { return lblFrom; }
-    public JLabel getLblTo() { return lblTo; }
+    public JTextField getTxtFromDate() {
+        return txtFromDate;
+    }
+
+    public JTextField getTxtToDate() {
+        return txtToDate;
+    }
+
+    public JComboBox<String> getCboGranularity() {
+        return cboGranularity;
+    }
+
+    public JButton getBtnView() {
+        return btnView;
+    }
+
+    public JTable getTblResult() {
+        return tblResult;
+    }
+
+    public JLabel getLblFrom() {
+        return lblFrom;
+    }
+
+    public JLabel getLblTo() {
+        return lblTo;
+    }
 }

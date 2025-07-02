@@ -1,6 +1,7 @@
 package Model;
 
 public class RevenueDTO {
+
     private String label;
     private int invoiceCount;
     private double total;

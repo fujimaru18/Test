@@ -7,15 +7,11 @@ import java.util.List;
 
 public class ProductDAO {
 
-    /* ------------------------------------------------------------------
-     * 1. TRUY VẤN THEO DANH MỤC – dùng trong ImportReceiptController
-     * ------------------------------------------------------------------ */
     public List<Product> getProductsByCategoryId(int categoryId) throws SQLException {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT productId, productName, categoryId, stockQuantity "
-                   + "FROM products WHERE categoryId = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                + "FROM products WHERE categoryId = ?";
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, categoryId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -31,20 +27,14 @@ public class ProductDAO {
         return list;
     }
 
-    /* Alias ngắn gọn hơn – nếu Controller gọi tên này */
     public List<Product> getProductsByCategory(int categoryId) throws SQLException {
         return getProductsByCategoryId(categoryId);
     }
 
-    /* ------------------------------------------------------------------
-     * 2. LẤY TẤT CẢ SẢN PHẨM
-     * ------------------------------------------------------------------ */
     public List<Product> getAllProducts() throws SQLException {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT productId, productName, categoryId, stockQuantity FROM products";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Product p = new Product(
                         rs.getInt("productId"),
@@ -58,14 +48,10 @@ public class ProductDAO {
         return list;
     }
 
-    /* ------------------------------------------------------------------
-     * 3. LẤY THEO ID
-     * ------------------------------------------------------------------ */
     public Product getProductById(int productId) throws SQLException {
         String sql = "SELECT productId, productName, categoryId, stockQuantity "
-                   + "FROM products WHERE productId = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                + "FROM products WHERE productId = ?";
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, productId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -80,28 +66,20 @@ public class ProductDAO {
         return null;
     }
 
-    /* ------------------------------------------------------------------
-     * 4. CẬP NHẬT TỒN KHO SAU KHI NHẬP HÀNG
-     * ------------------------------------------------------------------ */
     public boolean updateStockAfterImport(int productId, int addedQuantity) throws SQLException {
         String sql = "UPDATE products SET stockQuantity = stockQuantity + ? WHERE productId = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, addedQuantity);
             ps.setInt(2, productId);
             return ps.executeUpdate() > 0;
         }
     }
 
-    /* ------------------------------------------------------------------
-     * 5. S-03: DANH SÁCH SẢN PHẨM TỒN KHO THẤP
-     * ------------------------------------------------------------------ */
     public List<Product> getLowStockProducts(int threshold) throws SQLException {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT productId, productName, categoryId, stockQuantity "
-                   + "FROM products WHERE stockQuantity < ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                + "FROM products WHERE stockQuantity < ?";
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, threshold);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -117,22 +95,19 @@ public class ProductDAO {
         return list;
     }
 
-    /* ------------------------------------------------------------------
-     * (TÙY CHỌN) THÊM – SỬA – XOÁ – nếu bạn cần CRUD đầy đủ
-     * ------------------------------------------------------------------ */
-
     public boolean insertProduct(Product p) throws SQLException {
         String sql = "INSERT INTO products (productName, categoryId, stockQuantity) "
-                   + "VALUES (?, ?, ?)";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                + "VALUES (?, ?, ?)";
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, p.getProductName());
             ps.setInt(2, p.getCategoryId());
             ps.setInt(3, p.getStockQuantity());
             int affected = ps.executeUpdate();
             if (affected == 1) {
                 ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) p.setProductId(rs.getInt(1));
+                if (rs.next()) {
+                    p.setProductId(rs.getInt(1));
+                }
             }
             return affected == 1;
         }
@@ -140,9 +115,8 @@ public class ProductDAO {
 
     public boolean updateProduct(Product p) throws SQLException {
         String sql = "UPDATE products SET productName = ?, categoryId = ?, stockQuantity = ? "
-                   + "WHERE productId = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                + "WHERE productId = ?";
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, p.getProductName());
             ps.setInt(2, p.getCategoryId());
             ps.setInt(3, p.getStockQuantity());
@@ -153,8 +127,7 @@ public class ProductDAO {
 
     public boolean deleteProduct(int productId) throws SQLException {
         String sql = "DELETE FROM products WHERE productId = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, productId);
             return ps.executeUpdate() == 1;
         }

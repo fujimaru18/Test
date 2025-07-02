@@ -1,5 +1,5 @@
-
 package View;
+
 import Controller.ImportBySupplierController;
 import Controller.LowStockController;
 import Controller.ProfitController;
@@ -19,8 +19,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-
 public class ThongKeView extends JFrame {
+
     private JTabbedPane tabbedPane;
 
     public ThongKeView() {
@@ -31,48 +31,38 @@ public class ThongKeView extends JFrame {
         initUI();
     }
 
-private void initUI() {
-    tabbedPane = new JTabbedPane();
+    private void initUI() {
+        tabbedPane = new JTabbedPane();
 
-    try {
-        // S-01: Doanh thu
-        RevenuePanel revenuePanel = new RevenuePanel();
-        new RevenueController(revenuePanel, new RevenueDAO());
-        tabbedPane.addTab("Doanh thu", revenuePanel);
+        try {
+            RevenuePanel revenuePanel = new RevenuePanel();
+            new RevenueController(revenuePanel, new RevenueDAO());
+            tabbedPane.addTab("Doanh thu", revenuePanel);
 
-        // S-02: Top bán chạy
-        TopProductPanel topPanel = new TopProductPanel();
-        new TopProductController(topPanel, new TopProductDAO());
-        tabbedPane.addTab("Top bán chạy", topPanel);
+            TopProductPanel topPanel = new TopProductPanel();
+            new TopProductController(topPanel, new TopProductDAO());
+            tabbedPane.addTab("Top bán chạy", topPanel);
 
-        // S-03: Tồn kho thấp
-        LowStockPanel lowStockPanel = new LowStockPanel();
-        new LowStockController(lowStockPanel, new ProductDAO());
-        tabbedPane.addTab("Tồn kho thấp", lowStockPanel);
-        
-        
-                // S-04: Nhập theo nhà cung cấp
-        ImportBySupplierPanel importPanel = new ImportBySupplierPanel();
-        new ImportBySupplierController(importPanel, new ImportReceiptDAO());
-        tabbedPane.addTab("Nhập theo NCC", importPanel);
+            LowStockPanel lowStockPanel = new LowStockPanel();
+            new LowStockController(lowStockPanel, new ProductDAO());
+            tabbedPane.addTab("Tồn kho thấp", lowStockPanel);
 
-        // S-05: Lợi nhuận
-        ProfitPanel profitPanel = new ProfitPanel();
-        new ProfitController(profitPanel, new InvoiceDAO());
-        tabbedPane.addTab("Lợi nhuận", profitPanel);
+            ImportBySupplierPanel importPanel = new ImportBySupplierPanel();
+            new ImportBySupplierController(importPanel, new ImportReceiptDAO());
+            tabbedPane.addTab("Nhập theo NCC", importPanel);
 
-        // Các tab S-04, S-05 bạn thêm sau...
+            ProfitPanel profitPanel = new ProfitPanel();
+            new ProfitController(profitPanel, new InvoiceDAO());
+            tabbedPane.addTab("Lợi nhuận", profitPanel);
 
-    } catch (SQLException e) {
-        e.printStackTrace(); // hoặc hiển thị JOptionPane nếu cần
-        JOptionPane.showMessageDialog(this, "Lỗi kết nối CSDL: " + e.getMessage());
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+            JOptionPane.showMessageDialog(this, "Lỗi kết nối CSDL: " + e.getMessage());
+        }
+
+        setContentPane(tabbedPane);
     }
 
-    setContentPane(tabbedPane);
-}
-
-
-    
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());

@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class RevenuePanel extends JPanel {
+
     private JLabel lblFrom, lblTo;
     private JTextField txtFrom, txtTo;
     private JComboBox<String> cboGran;
@@ -15,18 +16,15 @@ public class RevenuePanel extends JPanel {
     public RevenuePanel() {
         setLayout(new BorderLayout());
 
-        // ===== Top Wrapper Panel with BoxLayout =====
         JPanel topWrapper = new JPanel();
         topWrapper.setLayout(new BoxLayout(topWrapper, BoxLayout.Y_AXIS));
 
-        // ===== Line 1: "Thống kê theo" =====
         JPanel line1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         line1.add(new JLabel("Thống kê theo:"));
         cboGran = new JComboBox<>(new String[]{"Ngày", "Tháng", "Năm"});
         line1.add(cboGran);
         topWrapper.add(line1);
 
-        // ===== Line 2: From - To - Button =====
         JPanel line2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         lblFrom = new JLabel("Từ:");
         txtFrom = new JTextField(10);
@@ -44,20 +42,17 @@ public class RevenuePanel extends JPanel {
         topWrapper.add(line2);
         add(topWrapper, BorderLayout.NORTH);
 
-        // ===== Table =====
         tblResult = new JTable(new DefaultTableModel(
                 new Object[]{"Thời gian", "Số hóa đơn", "Tổng tiền (VND)"}, 0
         ));
         add(new JScrollPane(tblResult), BorderLayout.CENTER);
 
-        // ===== Tổng doanh thu =====
         lblTotal = new JLabel("Tổng doanh thu: 0 VND");
         lblTotal.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         add(lblTotal, BorderLayout.SOUTH);
 
-        // ===== Logic hiển thị/ẩn các trường =====
         cboGran.addActionListener(e -> updateHint());
-        updateHint(); // thiết lập ban đầu
+        updateHint(); 
     }
 
     private void updateHint() {
@@ -83,10 +78,27 @@ public class RevenuePanel extends JPanel {
     }
 
     // ===== Getters =====
-    public JTextField getTxtFrom() { return txtFrom; }
-    public JTextField getTxtTo() { return txtTo; }
-    public JComboBox<String> getCboGran() { return cboGran; }
-    public JButton getBtnStat() { return btnStat; }
-    public JTable getTblResult() { return tblResult; }
-    public JLabel getLblTotal() { return lblTotal; }
+    public JTextField getTxtFrom() {
+        return txtFrom;
+    }
+
+    public JTextField getTxtTo() {
+        return txtTo;
+    }
+
+    public JComboBox<String> getCboGran() {
+        return cboGran;
+    }
+
+    public JButton getBtnStat() {
+        return btnStat;
+    }
+
+    public JTable getTblResult() {
+        return tblResult;
+    }
+
+    public JLabel getLblTotal() {
+        return lblTotal;
+    }
 }

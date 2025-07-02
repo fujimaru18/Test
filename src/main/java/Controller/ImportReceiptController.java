@@ -48,16 +48,24 @@ public class ImportReceiptController {
 
     // Cập nhật phiếu nhập cùng chi tiết
     public boolean updateImportReceipt(ImportReceipt receipt, List<ImportReceiptDetail> details) throws SQLException {
-        // Gọi đúng phương thức updateImportReceipt trong DAO với đủ tham số
         return receiptDAO.updateImportReceipt(receipt, details);
     }
 
     public List<ImportReceipt> searchImportReceipts(String keyword) throws SQLException {
-        return receiptDAO.searchImportReceipts(keyword);
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return getAllImportReceipts();
+        }
+
+        // Nếu keyword là số (toàn bộ ký tự là số), tìm theo mã phiếu
+        if (keyword.matches("\\d+")) {
+            return receiptDAO.searchImportReceiptsByReceiptId(keyword);
+        }
+
+        // Nếu không, tìm theo tất cả các trường
+        return receiptDAO.searchImportReceiptsByKeyword(keyword);
     }
 
     public boolean deleteImportReceipt(int receiptId) throws SQLException {
-        // ON DELETE CASCADE tự động xóa chi tiết phiếu nhập trong DB
         return receiptDAO.deleteImportReceipt(receiptId);
     }
 
@@ -88,4 +96,9 @@ public class ImportReceiptController {
     public String getUserNameById(int userId) throws SQLException {
         return UserDAO.getUserNameById(userId);
     }
+
+    public String getUserFullNameById(int userId) throws SQLException {
+        return UserDAO.getUserFullNameById(userId);
+    }
+
 }

@@ -12,6 +12,7 @@ import java.time.YearMonth;
 import java.util.List;
 
 public class ProfitController {
+
     private final ProfitPanel view;
     private final InvoiceDAO dao;
 
@@ -49,23 +50,25 @@ public class ProfitController {
             }
 
             List<ProfitDTO> list = switch (gran) {
-                case "Tháng" -> dao.getMonthlyProfit(from, to);
-                case "Năm"   -> dao.getYearlyProfit(from, to);
-                default      -> dao.getDailyProfit(from, to);
+                case "Tháng" ->
+                    dao.getMonthlyProfit(from, to);
+                case "Năm" ->
+                    dao.getYearlyProfit(from, to);
+                default ->
+                    dao.getDailyProfit(from, to);
             };
 
             DefaultTableModel model = (DefaultTableModel) view.getTblResult().getModel();
             model.setRowCount(0);
             double total = 0;
             for (ProfitDTO dto : list) {
-                
-            model.addRow(new Object[]{
-                  dto.getTimeLabel(),
-                  String.format("%,.0f", dto.getRevenue()),
-                  String.format("%,.0f", dto.getCost()),
-                  String.format("%,.0f", dto.getProfit())
-            });
 
+                model.addRow(new Object[]{
+                    dto.getTimeLabel(),
+                    String.format("%,.0f", dto.getRevenue()),
+                    String.format("%,.0f", dto.getCost()),
+                    String.format("%,.0f", dto.getProfit())
+                });
 
                 total += dto.getProfit();
             }

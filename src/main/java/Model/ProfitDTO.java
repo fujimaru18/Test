@@ -1,6 +1,7 @@
 package Model;
 
 public class ProfitDTO {
+
     private String timeLabel;
     private double revenue;
     private double cost;
@@ -13,8 +14,19 @@ public class ProfitDTO {
         this.profit = revenue - cost;
     }
 
-    public String getTimeLabel() { return timeLabel; }
-    public double getRevenue() { return revenue; }
-    public double getCost() { return cost; }
-    public double getProfit() { return profit; }
+    public String getTimeLabel() {
+        return timeLabel;
+    }
+
+    public double getRevenue() {
+        return revenue;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public double getProfit() {
+        return profit;
+    }
 }

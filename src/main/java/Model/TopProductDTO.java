@@ -1,6 +1,7 @@
 package Model;
 
 public class TopProductDTO {
+
     private String productName;
     private int quantitySold;
     private double totalRevenue;

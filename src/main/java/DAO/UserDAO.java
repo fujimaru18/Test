@@ -3,10 +3,10 @@ package DAO;
 import java.sql.*;
 
 public class UserDAO {
+
     public static String getUserNameById(int userId) throws SQLException {
         String sql = "SELECT username FROM users WHERE userId = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -15,4 +15,18 @@ public class UserDAO {
         }
         return "Unknown";
     }
+
+    public static String getUserFullNameById(int userId) throws SQLException {
+        String sql = "SELECT fullName FROM users WHERE userId = ?";
+        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("fullName");
+                }
+            }
+        }
+        return null;
+    }
+
 }

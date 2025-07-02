@@ -59,9 +59,9 @@ public class TopProductDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 TopProductDTO dto = new TopProductDTO(
-                    rs.getString("productName"),
-                    rs.getInt("quantitySold"),
-                    rs.getDouble("totalRevenue")
+                        rs.getString("productName"),
+                        rs.getInt("quantitySold"),
+                        rs.getDouble("totalRevenue")
                 );
                 list.add(dto);
             }
