@@ -1,6 +1,6 @@
 package App;
 
-import view.DangNhapView;
+//import view.DangNhapView;
 import View.Menu;
 
 public class MainApp {

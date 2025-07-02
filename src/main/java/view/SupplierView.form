@@ -255,15 +255,6 @@
                           <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-<<<<<<< HEAD
-                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton5" pref="92" max="32767" attributes="0"/>
-                      <Component id="jButton4" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-=======
->>>>>>> 43fdcc9ec72e898b3cb2c014c6f22202cb161e5e
               </Group>
           </Group>
         </DimensionLayout>
