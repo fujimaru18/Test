@@ -7,7 +7,7 @@ package Controller;
 import App.MainApp;
 import Model.CartiItemModel;
 import Model.CustomerModel;
-import Model.SanPham;
+import Model.Product;
 import Service.InvoiceService;
 import Service.OrderService;
 import View.InvoiceView;
@@ -112,7 +112,7 @@ public class OrderController {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                SanPham selectProduct = (SanPham) form.getSelectedProduct();
+                Product selectProduct = (Product) form.getSelectedProduct();
                 int productID = selectProduct.getproductId();
 
                 String productName = selectProduct.getName(); // tạo phương thức trong View
