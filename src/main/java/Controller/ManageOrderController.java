@@ -160,9 +160,9 @@ public class ManageOrderController {
                 orderView.setCartItems(details);
                 orderView.setCurrentOrderId(orderId);
                 orderView.setCusId(order.getCustomerId());
+                orderView.loadData(orderId);
                 System.out.println("Đã set orderId: " + orderView.getOrderId());
                 main.showPanel("Order"); // Chuyển về form tạo đơn hàng
-
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(form, "Lỗi truy vấn dữ liệu: " + ex.getMessage());

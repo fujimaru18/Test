@@ -20,7 +20,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Tuong Hue
@@ -41,6 +40,8 @@ public class OrderController {
         this.form.getBtnAddOrder().addActionListener(new CreateOrderListener());
         this.form.getCreateInvoice().addActionListener(new CreateInvoice());
         this.form.getBtnUpdate().addActionListener(new UpdateOrder());
+
+       
     }
 
     class UpdateOrder implements ActionListener {
@@ -50,20 +51,18 @@ public class OrderController {
             try {
                 int orderId = form.getOrderId();
                 List<CartiItemModel> cartItems = form.getCartItems();
-                
+
 //                 int customerId = form.getSelectedCustomerId(); // Lấy ID từ dòng đang chọn
                 String name = form.getCustomerName();
                 String phone = form.getPhoneNumber();
                 String address = form.getAddress();
                 String note = form.getNote();
-                
-                 CustomerModel model = new CustomerModel(form.getCusId(),name,phone,address,note);
-                service.updateOrderDetail(model,cartItems, orderId);
-                
-                
-                
+
+                CustomerModel model = new CustomerModel(form.getCusId(), name, phone, address, note);
+                service.updateOrderDetail(model, cartItems, orderId);
+
                 JOptionPane.showMessageDialog(form, "Cập nhật đơn hàng thành công!");
-                System.out.println("123");
+                System.out.println(orderId);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(form, "Lỗi tạo đơn hàng: " + ex.getMessage());
@@ -71,42 +70,42 @@ public class OrderController {
         }
     }
 
-   class CreateInvoice implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        try {
-            String name = form.getCustomerName();
-            String phone = form.getPhoneNumber();
-            String address = form.getAddress();
-            String note = form.getNote();
-            List<CartiItemModel> cartItems = form.getCartItems();
+    class CreateInvoice implements ActionListener {
 
-            if (name.isEmpty() || phone.isEmpty() || cartItems.isEmpty()) {
-                JOptionPane.showMessageDialog(form, "Vui lòng nhập đầy đủ thông tin!");
-                return;
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                String name = form.getCustomerName();
+                String phone = form.getPhoneNumber();
+                String address = form.getAddress();
+                String note = form.getNote();
+                List<CartiItemModel> cartItems = form.getCartItems();
+
+                if (name.isEmpty() || phone.isEmpty() || cartItems.isEmpty()) {
+                    JOptionPane.showMessageDialog(form, "Vui lòng nhập đầy đủ thông tin!");
+                    return;
+                }
+
+                CustomerModel customer = new CustomerModel(name, phone, address, note);
+
+                int existingOrderId = service.findPendingOrder(customer);
+                int orderId;
+                if (existingOrderId != -1) {
+                    orderId = existingOrderId;
+                } else {
+                    orderId = service.createOrderOnly(customer, cartItems);
+                }
+
+                // ✅ Gọi đúng hàm hiển thị hóa đơn từ Menu
+                mainApp.showInvoiceView(orderId);
+
+                System.out.println("Order ID: " + orderId);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(form, "Lỗi tạo đơn hàng: " + ex.getMessage());
             }
-
-            CustomerModel customer = new CustomerModel(name, phone, address, note);
-
-            int existingOrderId = service.findPendingOrder(customer);
-            int orderId;
-            if (existingOrderId != -1) {
-                orderId = existingOrderId;
-            } else {
-                orderId = service.createOrderOnly(customer, cartItems);
-            }
-
-            // ✅ Gọi đúng hàm hiển thị hóa đơn từ Menu
-            mainApp.showInvoiceView(orderId);
-
-            System.out.println("Order ID: " + orderId);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(form, "Lỗi tạo đơn hàng: " + ex.getMessage());
         }
     }
-}
-
 
     class AddCartListener implements ActionListener {
 

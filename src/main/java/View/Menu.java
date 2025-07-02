@@ -37,7 +37,7 @@ public class Menu extends JFrame {
     private CustomerController customerController;
     private ManageInvoiceController manageInvoiceController;
     private InvoiceDetailController invoiceDetailController;
-    
+
     private OrderDAO orderDAO;
 
     public Menu() {
@@ -50,6 +50,14 @@ public class Menu extends JFrame {
         createMenuBar();
         createMainPanel();
         showPanel("Order"); // Mặc định hiển thị panel Đơn hàng
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public CardLayout getCardLayout() {
+        return cardLayout;
     }
 
     private void createMenuBar() {
@@ -69,7 +77,7 @@ public class Menu extends JFrame {
         });
 
         JMenuItem customerItem = new JMenuItem("Danh sách khách hàng");
-        customerItem.addActionListener(e ->{
+        customerItem.addActionListener(e -> {
             customerView.loadData();
             showPanel("Customer");
         });
