@@ -52,7 +52,7 @@ public class ProfitPanel extends JPanel {
         add(lblTotal, BorderLayout.SOUTH);
 
         cboGran.addActionListener(e -> updateInputHint());
-        updateInputHint(); // thiết lập mặc định
+        updateInputHint();
     }
 
     private void updateInputHint() {
@@ -77,7 +77,6 @@ public class ProfitPanel extends JPanel {
         }
     }
 
-    // ===== Getters =====
     public JTextField getTxtFrom() {
         return txtFrom;
     }

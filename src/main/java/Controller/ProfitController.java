@@ -1,6 +1,6 @@
 package Controller;
 
-import DAO.InvoiceDAO;
+import DAO.ProfitDAO;
 import Model.ProfitDTO;
 import View.ProfitPanel;
 
@@ -14,9 +14,9 @@ import java.util.List;
 public class ProfitController {
 
     private final ProfitPanel view;
-    private final InvoiceDAO dao;
+    private final ProfitDAO dao;
 
-    public ProfitController(ProfitPanel view, InvoiceDAO dao) {
+    public ProfitController(ProfitPanel view, ProfitDAO dao) {
         this.view = view;
         this.dao = dao;
         init();

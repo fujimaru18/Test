@@ -70,4 +70,6 @@ public class ImportReceiptDetailDAO {
         }
         return list;
     }
+    
+    
 }

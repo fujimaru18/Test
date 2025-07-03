@@ -30,7 +30,7 @@ public class LowStockController {
                 Logger.getLogger(LowStockController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        loadData(); // load khi mở tab
+        loadData(); 
     }
 
     private void loadData() throws SQLException {

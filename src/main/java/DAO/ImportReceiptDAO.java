@@ -1,6 +1,5 @@
 package DAO;
 
-import Model.ImportDetailBySupplierDTO;
 import Model.ImportReceipt;
 import Model.ImportReceiptDetail;
 
@@ -81,45 +80,7 @@ public class ImportReceiptDAO {
         return list;
     }
 
-    // Thống kê chi tiết nhập hàng theo nhà cung cấp
-    public List<ImportDetailBySupplierDTO> getDetailedImportBySupplier(LocalDate from, LocalDate to) throws SQLException {
-        List<ImportDetailBySupplierDTO> list = new ArrayList<>();
 
-        String sql = """
-            SELECT s.supplierName,
-                   c.categoryName,
-                   p.productName,
-                   d.quantity,
-                   d.importPrice
-            FROM import_receipts r
-            JOIN import_receipt_details d ON r.receiptId = d.receiptId
-            JOIN products p ON d.productId = p.productId
-            JOIN suppliers s ON p.supplierId = s.supplierId
-            JOIN categories c ON p.categoryId = c.categoryId
-            WHERE DATE(r.importDate) BETWEEN ? AND ?
-            ORDER BY s.supplierName, c.categoryName, p.productName
-        """;
-
-        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setDate(1, Date.valueOf(from));
-            ps.setDate(2, Date.valueOf(to));
-
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    list.add(new ImportDetailBySupplierDTO(
-                            rs.getString("supplierName"),
-                            rs.getString("categoryName"),
-                            rs.getString("productName"),
-                            rs.getInt("quantity"),
-                            rs.getDouble("importPrice")
-                    ));
-                }
-            }
-        }
-
-        return list;
-    }
 
     public boolean updateImportReceipt(ImportReceipt receipt, List<ImportReceiptDetail> newDetails) throws SQLException {
         String updateHead = """

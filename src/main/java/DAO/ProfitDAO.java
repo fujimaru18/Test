@@ -1,13 +1,12 @@
 package DAO;
 
 import Model.ProfitDTO;
-import Model.RevenueDTO;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoiceDAO {
+public class ProfitDAO {
 
     /* ---------- Thống kê theo NGÀY ---------- */
     public List<ProfitDTO> getDailyProfit(LocalDate from, LocalDate to) throws SQLException {
@@ -81,52 +80,6 @@ public class InvoiceDAO {
                     double revenue = rs.getDouble("revenue");
                     double cost = rs.getDouble("cost");
                     list.add(new ProfitDTO(label, revenue, cost));
-                }
-            }
-        }
-        return list;
-    }
-
-    public List<RevenueDTO> getRevenueStats(String granularity, LocalDate from, LocalDate to) throws SQLException {
-        String timeFormat = switch (granularity) {
-            case "Tháng" ->
-                "%m/%Y";
-            case "Năm" ->
-                "%Y";
-            default ->
-                "%d/%m/%Y";
-        };
-
-        String groupBy = switch (granularity) {
-            case "Tháng" ->
-                "YEAR(paymentDate), MONTH(paymentDate)";
-            case "Năm" ->
-                "YEAR(paymentDate)";
-            default ->
-                "DATE(paymentDate)";
-        };
-
-        String sql = String.format("""
-        SELECT DATE_FORMAT(paymentDate, '%s') AS timeLabel,
-               COUNT(*) AS invoiceCount,
-               SUM(totalAmount) AS totalAmount
-        FROM invoices
-        WHERE DATE(paymentDate) BETWEEN ? AND ?
-        GROUP BY %s
-        ORDER BY MIN(paymentDate)
-    """, timeFormat, groupBy);
-
-        List<RevenueDTO> list = new ArrayList<>();
-        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setDate(1, Date.valueOf(from));
-            ps.setDate(2, Date.valueOf(to));
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    list.add(new RevenueDTO(
-                            rs.getString("timeLabel"),
-                            rs.getInt("invoiceCount"),
-                            rs.getDouble("totalAmount")
-                    ));
                 }
             }
         }
