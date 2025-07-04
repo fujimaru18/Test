@@ -26,10 +26,9 @@ public class ProductDAO {
         }
         return list;
     }
-
-    public List<Product> getProductsByCategory(int categoryId) throws SQLException {
-        return getProductsByCategoryId(categoryId);
-    }
+//    public List<Product> getProductsByCategory(int categoryId) throws SQLException {
+//        return getProductsByCategoryId(categoryId);
+//    }
 
     public List<Product> getAllProducts() throws SQLException {
         List<Product> list = new ArrayList<>();
@@ -95,41 +94,40 @@ public class ProductDAO {
         return list;
     }
 
-    public boolean insertProduct(Product p) throws SQLException {
-        String sql = "INSERT INTO products (productName, categoryId, stockQuantity) "
-                + "VALUES (?, ?, ?)";
-        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, p.getProductName());
-            ps.setInt(2, p.getCategoryId());
-            ps.setInt(3, p.getStockQuantity());
-            int affected = ps.executeUpdate();
-            if (affected == 1) {
-                ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) {
-                    p.setProductId(rs.getInt(1));
-                }
-            }
-            return affected == 1;
-        }
-    }
-
-    public boolean updateProduct(Product p) throws SQLException {
-        String sql = "UPDATE products SET productName = ?, categoryId = ?, stockQuantity = ? "
-                + "WHERE productId = ?";
-        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, p.getProductName());
-            ps.setInt(2, p.getCategoryId());
-            ps.setInt(3, p.getStockQuantity());
-            ps.setInt(4, p.getProductId());
-            return ps.executeUpdate() == 1;
-        }
-    }
-
-    public boolean deleteProduct(int productId) throws SQLException {
-        String sql = "DELETE FROM products WHERE productId = ?";
-        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, productId);
-            return ps.executeUpdate() == 1;
-        }
-    }
+//    public boolean insertProduct(Product p) throws SQLException {
+//        String sql = "INSERT INTO products (productName, categoryId, stockQuantity) "
+//                + "VALUES (?, ?, ?)";
+//        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+//            ps.setString(1, p.getProductName());
+//            ps.setInt(2, p.getCategoryId());
+//            ps.setInt(3, p.getStockQuantity());
+//            int affected = ps.executeUpdate();
+//            if (affected == 1) {
+//                ResultSet rs = ps.getGeneratedKeys();
+//                if (rs.next()) {
+//                    p.setProductId(rs.getInt(1));
+//                }
+//            }
+//            return affected == 1;
+//        }
+//    }
+//
+//    public boolean updateProduct(Product p) throws SQLException {
+//        String sql = "UPDATE products SET productName = ?, categoryId = ?, stockQuantity = ? "
+//                + "WHERE productId = ?";
+//        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+//            ps.setString(1, p.getProductName());
+//            ps.setInt(2, p.getCategoryId());
+//            ps.setInt(3, p.getStockQuantity());
+//            ps.setInt(4, p.getProductId());
+//            return ps.executeUpdate() == 1;
+//        }
+//    }
+//    public boolean deleteProduct(int productId) throws SQLException {
+//        String sql = "DELETE FROM products WHERE productId = ?";
+//        try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+//            ps.setInt(1, productId);
+//            return ps.executeUpdate() == 1;
+//        }
+//    }
 }
